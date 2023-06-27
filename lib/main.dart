@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recet_ia/models/recipe.dart';
 import 'package:recet_ia/screen/home.dart';
 
 // import 'package:recipe/consent/navigation.dart';
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
+      home: Recipe(),
+      // debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -6,11 +6,17 @@ class RecipeCard extends StatelessWidget {
   final String rating;
   final String cookTime;
   final String thumbnailUrl;
+
+  // final String ingredient;
+  // final String directionsUrl;
   RecipeCard({
     @required this.title,
     @required this.cookTime,
     @required this.rating,
     @required this.thumbnailUrl,
+
+    // @required this.ingredient,
+    // @required this.directionsUrl,
   });
   @override
   Widget build(BuildContext context) {
@@ -67,6 +73,7 @@ class RecipeCard extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
                           cookTime,style: TextStyle(

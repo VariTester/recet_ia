@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:recet_ia/consent/appbar.dart';
 
 import 'package:recet_ia/consent/colors.dart';
+import 'package:recet_ia/models/recipe.api.dart';
+import 'package:recet_ia/models/recipe.dart';
 
 import 'package:recet_ia/screen/widgets/recipe_card.dart';
 
@@ -18,6 +20,24 @@ class Home extends StatefulWidget{
 }
 
 class _HomeState extends State<Home>{
+
+  List<Recipe> _recipes;
+  bool _isLoading = true;
+  @override
+  void initState() {
+    super.initState();
+    getRecipes();
+    
+  }
+
+   Future<void> getRecipes() async {
+    // _recipes = await RecipeApi.getRecipe();
+    setState(() {
+      _isLoading = false;
+    });
+    // print(_recipes);
+  }
+
   int indexx =0;
   List category = ['Inicio','Desayuno','Almuerzo','Cena','ChatGPT'];
   @override 
@@ -108,9 +128,10 @@ class _HomeState extends State<Home>{
               ],),
             ),
           ),
-          //gaaaaaaaaaaaaaaaaaaaaaaa lo hicee!!!!!
-          RecipeCard(title: "My recipe",cookTime: '30 min',rating: '4.3',thumbnailUrl: 'https://lh3.googleusercontent.com/ei5eF1LRFkkcekhjdR_8XgOqgdjpomf-rda_vvh7jIauCgLlEWORINSKMRR6I6iTcxxZL9riJwFqKMvK0ixS0xwnRHGMY4I5Zw=s360',)
-        ],
+   
+           RecipeCard(title: "My recipe",cookTime: '30 min',rating: '4.3',thumbnailUrl: 'https://lh3.googleusercontent.com/ei5eF1LRFkkcekhjdR_8XgOqgdjpomf-rda_vvh7jIauCgLlEWORINSKMRR6I6iTcxxZL9riJwFqKMvK0ixS0xwnRHGMY4I5Zw=s360',)
+       
+       ],
       ),
       
     );
