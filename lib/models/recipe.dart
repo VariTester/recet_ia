@@ -1,50 +1,24 @@
-// import 'dart:ffi';
-
-// class Recipe{
-//   final String name;
-//   final String images;
-//   final double rating;
-//   final String totalTime;
-
-//   // final String ingredient;
-//   // final String directionsUrl;
-
-//   Recipe({this.name, this.images, this.rating, this.totalTime});
-
-//   factory Recipe.fromJson(dynamic json){
-//     return Recipe(
-//       name: json['name'] as String,
-//       images: json['images'][0]['hostedLargeUrl'] as String,
-//       rating: json['rating'] as double,
-//       totalTime: json['totalTime'] as String,
-
-//       // ingredient: json['ingredient'] as String,
-//       // directionsUrl: json['directionsUrl'] as String
-//     );
-//   }
-  
-//   static List<Recipe> recipesFromSnapshot(List snapshot){
-//     return snapshot.map(
-//       (data){
-//         return Recipe.fromJson(data);
-//       }
-//     ).toList();
-//   }
-// @override
-//   String toString(){
-//     return 'Recipe {name: $name, image: $images, rating: $rating, totalTime: $totalTime}';
-//   }
-
-// }
-
+// import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:recet_ia/consent/colors.dart';
 import 'package:recet_ia/screen/home.dart';
 
+
+
 class Recipe extends StatelessWidget{
-  const Recipe({key});
+  // const Recipe({key});
+  final String title;
+  final String rating;
+  final String cookTime;
+  final String thumbnailUrl;
+
+  Recipe({
+    @required this.title,
+    @required this.cookTime,
+    @required this.rating,
+    @required this.thumbnailUrl,
+  });
 
 @override
 Widget build(BuildContext context){
@@ -55,7 +29,7 @@ Widget build(BuildContext context){
         SliverAppBar(
           expandedHeight: 400,
           flexibleSpace: FlexibleSpaceBar(
-            background: Image.network('https://lh3.googleusercontent.com/ei5eF1LRFkkcekhjdR_8XgOqgdjpomf-rda_vvh7jIauCgLlEWORINSKMRR6I6iTcxxZL9riJwFqKMvK0ixS0xwnRHGMY4I5Zw=s360',
+            background: Image.network((thumbnailUrl),
             fit: BoxFit.cover),
           ),
           bottom: PreferredSize(preferredSize: Size.fromHeight(10),

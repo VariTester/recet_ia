@@ -1,13 +1,18 @@
 
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:recet_ia/consent/appbar.dart';
 
 import 'package:recet_ia/consent/colors.dart';
 import 'package:recet_ia/models/recipe.api.dart';
-import 'package:recet_ia/models/recipe.dart';
+// import 'package:recet_ia/models/recipe.dart';
 
 import 'package:recet_ia/screen/widgets/recipe_card.dart';
+
+import 'package:http/http.dart' as http;
+
+import '../models/recipe.dart';
+import '../models/recipetwo.dart';
 
 class Home extends StatefulWidget{
   const Home({Key key}) : super(key: key);
@@ -21,22 +26,24 @@ class Home extends StatefulWidget{
 
 class _HomeState extends State<Home>{
 
-  List<Recipe> _recipes;
-  bool _isLoading = true;
-  @override
+ List<RecipeOnline> _recipesOnline;
+ bool _isLoading = true;
+ @override
   void initState() {
     super.initState();
     getRecipes();
-    
   }
 
-   Future<void> getRecipes() async {
-    // _recipes = await RecipeApi.getRecipe();
+  Future<void> getRecipes() async{
+    _recipesOnline = await RecipeApi.getRecipeOnline();
     setState(() {
       _isLoading = false;
     });
-    // print(_recipes);
+    print(_recipesOnline);
   }
+
+
+
 
   int indexx =0;
   List category = ['Inicio','Desayuno','Almuerzo','Cena','ChatGPT'];
@@ -129,8 +136,31 @@ class _HomeState extends State<Home>{
             ),
           ),
    
-           RecipeCard(title: "My recipe",cookTime: '30 min',rating: '4.3',thumbnailUrl: 'https://lh3.googleusercontent.com/ei5eF1LRFkkcekhjdR_8XgOqgdjpomf-rda_vvh7jIauCgLlEWORINSKMRR6I6iTcxxZL9riJwFqKMvK0ixS0xwnRHGMY4I5Zw=s360',)
-       
+          RecipeCard(title: _recipesOnline[indexx].name,cookTime: _recipesOnline[indexx].totalTime,rating: '4.3',thumbnailUrl: _recipesOnline[indexx].images,)
+         
+         
+        //   ListView.builder(
+        //     itemCount: _recipesOnline.length,
+        //     itemBuilder: ((context, indexx) {
+        //   return RecipeCard(
+        //     title: _recipesOnline[indexx].name,
+        //     cookTime: _recipesOnline[indexx].totalTime,
+        //     rating: _recipesOnline[indexx].rating.toString(),
+        //     thumbnailUrl: _recipesOnline[indexx].images);
+        // }))
+
+
+
+          // CustomScrollView(
+          //   slivers: <Widget>[
+          //     SliverGrid.count(crossAxisCount: _recipesOnline.length,
+          //     children:<Widget>[
+          //      GridTile(child: Image.network(_recipesOnline[indexx].images)) 
+          //     ]),
+              
+          //   ],
+
+          // )
        ],
       ),
       

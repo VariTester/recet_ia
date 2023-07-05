@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recet_ia/consent/colors.dart';
+import 'package:recet_ia/models/recipe.dart';
 
 class RecipeCard extends StatelessWidget {
   final String title;
@@ -65,6 +66,7 @@ class RecipeCard extends StatelessWidget {
                   SizedBox(height: 20),
                   //ACA ESTA EL TITULO DE LAS RECETAS
                   Text(title,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
                     color: acento,
@@ -100,15 +102,17 @@ class RecipeCard extends StatelessWidget {
               );
             },
             //esto es para coontrolar los espacios principales del background
-            childCount: 4,
+            childCount: 10,
             ), gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              mainAxisExtent: 270,
+              //Largo de las cajas
+              mainAxisExtent: 300,
               crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              mainAxisSpacing: 15,
           
               ),
             ),
           );
   }
 }
+
